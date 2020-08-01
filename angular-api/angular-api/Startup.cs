@@ -49,6 +49,13 @@ namespace angular_api
                 config.SwaggerEndpoint("/swagger/v1/swagger.json", "Angular API");
             });
 
+            app.UseCors(option =>
+            {
+                option.AllowAnyHeader();
+                option.AllowAnyMethod();
+                option.AllowAnyOrigin();
+            });
+
             app.UseMvc();
         }
     }

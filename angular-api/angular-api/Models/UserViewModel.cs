@@ -12,5 +12,11 @@ namespace angular.api.Models
         public string Email { get; set; }
 
         public DateTime? Date { get; set; }
+        public List<ContentModel> Telefonos { get; set; }
+    }
+
+    public class ContentModel
+    {
+        public string Telefono { get; set; }
     }
 }

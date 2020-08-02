@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using angular.api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace angular_api.Controllers
@@ -26,6 +27,12 @@ namespace angular_api.Controllers
                 Apellido = "Perez",
                 Email = "prueba@angular.com"
             });
+        }
+
+        [HttpPost("adduser")]
+        public ActionResult Adduser([FromBody] UserViewModel user)
+        {
+            return Ok();
         }
     }
 }

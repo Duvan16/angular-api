@@ -34,5 +34,34 @@ namespace angular_api.Controllers
         {
             return Ok();
         }
+
+        [HttpGet("users")]
+        public ActionResult GetUsers()
+        {
+            List<UserViewModel> users = new List<UserViewModel>();
+
+            users.Add(new UserViewModel
+            {
+                Apellido = "garcia",
+                Email = "email@gmail.com",
+                Nombre = "Federico"
+            });
+
+            users.Add(new UserViewModel
+            {
+                Apellido = "Juan",
+                Email = "Juan@gmail.com",
+                Nombre = "Juan"
+            });
+
+            users.Add(new UserViewModel
+            {
+                Apellido = "garcia",
+                Email = "email@gmail.com",
+                Nombre = "Federico"
+            });
+
+            return Ok(users);
+        }
     }
 }

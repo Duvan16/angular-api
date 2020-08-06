@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using angular.api.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace angular_api.Controllers
@@ -22,7 +25,8 @@ namespace angular_api.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return Ok(new { 
+            return Ok(new
+            {
                 Nombre = "Pedro",
                 Apellido = "Perez",
                 Email = "prueba@angular.com"
@@ -32,6 +36,19 @@ namespace angular_api.Controllers
         [HttpPost("adduser")]
         public ActionResult Adduser([FromBody] UserViewModel user)
         {
+            return Ok();
+        }
+
+        //[HttpPost("image")]
+        public async Task<ActionResult> PostImage(IFormFile image)
+        {
+            var filepath = Path.GetTempFileName();
+
+            using (var stream = new FileStream(filepath, FileMode.Create))
+            {
+                await image.CopyToAsync(stream);
+            }
+            //    //Realiaremso la acción que queramos
             return Ok();
         }
 
